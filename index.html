@@ -138,6 +138,23 @@
     .nums { font-variant-numeric: tabular-nums; }
     #problem, #features, #pricing, #buy { scroll-margin-top: 5.75rem; }
 
+    .shot-frame { background: #14181f; }
+    .shot-frame img {
+      aspect-ratio: 5 / 4;
+      width: 100%;
+      object-fit: contain;
+      object-position: center top;
+      background: #14181f;
+    }
+    #shot-dialog {
+      border: 0;
+      padding: 0;
+      width: min(1100px, calc(100% - 2rem));
+      background: transparent;
+    }
+    #shot-dialog::backdrop { background: rgba(7, 16, 24, 0.86); }
+    #shot-dialog img { max-height: min(78vh, 860px); }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -389,103 +406,125 @@
       <div class="mx-auto max-w-[1120px] px-5">
         <div class="reveal max-w-2xl">
           <p class="text-xs font-bold uppercase tracking-[0.2em] text-signal">The suite</p>
-          <h2 class="mt-3 font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">Built for the ramp, the tyre bay, and the front desk.</h2>
-          <p class="mt-4 text-lg leading-relaxed text-steel">Four jobs the garage does every day, plus a licence that stays on the machine you paid for. No modules to switch on later.</p>
+          <h2 class="mt-3 font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">Built for the front desk, the diary, and the ramp.</h2>
+          <p class="mt-4 text-lg leading-relaxed text-steel">Eight screens for the working day. Check a car in, book the diary, price the job, and see what is due — on the PC you already own.</p>
         </div>
 
-        <div class="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-12">
-          <article class="feature-card reveal col-span-1 flex flex-col rounded-xl border border-line bg-card p-6 lg:col-span-7 md:p-7" style="transition-delay: 0ms">
-            <div class="ico grid h-12 w-12 place-items-center rounded-lg bg-[#F6E4E1] text-ink">
-              <svg class="h-6 w-6"><use href="#i-car"/></svg>
-            </div>
-            <h3 class="mt-5 font-display text-2xl font-bold">Customers and vehicles</h3>
-            <p class="mt-2 max-w-prose text-[15px] leading-relaxed text-steel">The registration, make, MOT due date, mileage, and the note from under the bonnet — kept with the car. History stays in the garage, not in a spreadsheet nobody can find.</p>
-            <div class="mt-6 overflow-hidden rounded-lg border border-line bg-paper" aria-hidden="true">
-              <div class="grid grid-cols-[1fr_auto] gap-2 border-b border-line px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-steel"><span>Vehicle</span><span>MOT</span></div>
-              <div class="grid grid-cols-[1fr_auto] items-center gap-2 border-b border-line bg-white px-3 py-2.5 text-sm"><span><strong>YE64 NRX</strong> · BMW 1 Series</span><span class="rounded bg-signal px-2 py-0.5 text-[11px] font-bold text-white">Tomorrow</span></div>
-              <div class="grid grid-cols-[1fr_auto] items-center gap-2 border-b border-line px-3 py-2.5 text-sm"><span><strong>BN19 SPE</strong> · Corsa · 41,006 mi</span><span class="font-semibold">4 Nov</span></div>
-              <div class="grid grid-cols-[1fr_auto] items-center gap-2 px-3 py-2.5 text-sm"><span><strong>FG68 KPL</strong> · Focus · 62,480 mi</span><span class="font-semibold">18 Nov</span></div>
+        <div class="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
+          <article class="feature-card reveal group flex flex-col overflow-hidden rounded-xl border border-line bg-card">
+            <button type="button" class="shot-open shot-frame relative block w-full cursor-zoom-in text-left" data-src="check-in.png" data-title="Vehicle check-in" aria-label="Enlarge Vehicle check-in" data-alt="Fonrek Studio vehicle check-in, with a search of the workshop database">
+              <img src="check-in.png" width="1019" height="791" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-3 right-3 rounded-md bg-ink/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">Enlarge</span>
+            </button>
+            <div class="flex flex-1 flex-col p-6 md:p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-signal">01 · Front desk</p>
+              <h3 class="mt-2 font-display text-2xl font-bold">Vehicle check-in</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-steel">Find the car before it reaches the ramp. Search the workshop database and open the record that is already on this PC.</p>
             </div>
           </article>
 
-          <article class="feature-card reveal col-span-1 flex flex-col rounded-xl border border-line bg-card p-6 lg:col-span-5 md:p-7" style="transition-delay: 80ms">
-            <div class="ico grid h-12 w-12 place-items-center rounded-lg bg-[#F6E4E1] text-ink">
-              <svg class="h-6 w-6"><use href="#i-tyre"/></svg>
-            </div>
-            <h3 class="mt-5 font-display text-2xl font-bold">Tyre storage log</h3>
-            <p class="mt-2 text-[15px] leading-relaxed text-steel">Winter and summer sets, logged to a rack, a size, and a registration. Find the right tyres before the customer is at the counter.</p>
-            <ul class="mt-6 space-y-2 text-sm" aria-hidden="true">
-              <li class="flex items-center justify-between gap-2 rounded-lg bg-ink px-3 py-2.5 text-white">
-                <span class="font-bold">C3</span>
-                <span class="text-white/80">195/55 R16 · Winter</span>
-                <span class="font-semibold">BN19 SPE</span>
-              </li>
-              <li class="flex items-center justify-between gap-2 rounded-lg border border-line bg-white px-3 py-2.5">
-                <span class="font-bold">C4</span>
-                <span class="text-steel">225/45 R17 · Summer</span>
-                <span class="font-semibold">LK21 HWD</span>
-              </li>
-              <li class="flex items-center justify-between gap-2 rounded-lg border border-line bg-white px-3 py-2.5">
-                <span class="font-bold">D1</span>
-                <span class="text-steel">205/55 R16 · Winter</span>
-                <span class="font-semibold">YE64 NRX</span>
-              </li>
-            </ul>
-          </article>
-
-          <article class="feature-card reveal col-span-1 flex flex-col rounded-xl border border-line bg-card p-6 lg:col-span-5 md:p-7" style="transition-delay: 40ms">
-            <div class="ico grid h-12 w-12 place-items-center rounded-lg bg-[#F6E4E1] text-ink">
-              <svg class="h-6 w-6"><use href="#i-doc"/></svg>
-            </div>
-            <h3 class="mt-5 font-display text-2xl font-bold">Catalogue and PDF invoices</h3>
-            <p class="mt-2 text-[15px] leading-relaxed text-steel">Price the job from your own catalogue — labour, parts, and the MOT. One click writes a clean invoice or workshop protocol as a PDF.</p>
-            <div class="mt-6 rounded-lg border border-line bg-white p-4 text-sm" aria-hidden="true">
-              <div class="flex items-baseline justify-between">
-                <p class="font-bold">INV-1048</p>
-                <p class="text-[11px] font-semibold uppercase tracking-wider text-steel">From catalogue</p>
-              </div>
-              <p class="text-xs text-steel">FG68 KPL · Ford Focus · Hughes</p>
-              <dl class="nums mt-3 space-y-1.5 text-[13px]">
-                <div class="flex justify-between gap-3"><dt>MOT test <span class="text-steel">VAT exempt</span></dt><dd>£54.85</dd></div>
-                <div class="flex justify-between gap-3"><dt>Labour, 1.5 hrs</dt><dd>£120.00</dd></div>
-                <div class="flex justify-between gap-3"><dt>Oil and filter</dt><dd>£38.40</dd></div>
-                <div class="flex justify-between gap-3 text-steel"><dt>VAT @ 20%</dt><dd>£31.68</dd></div>
-                <div class="flex justify-between gap-3 border-t border-line pt-2 font-bold"><dt>Total</dt><dd>£244.93</dd></div>
-              </dl>
+          <article class="feature-card reveal group flex flex-col overflow-hidden rounded-xl border border-line bg-card" style="transition-delay: 60ms">
+            <button type="button" class="shot-open shot-frame relative block w-full cursor-zoom-in text-left" data-src="diary.png" data-title="Diary and bookings" aria-label="Enlarge Diary and bookings" data-alt="Fonrek Studio diary, with name, phone, registration, date, time, and reason for the visit">
+              <img src="diary.png" width="1004" height="790" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-3 right-3 rounded-md bg-ink/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">Enlarge</span>
+            </button>
+            <div class="flex flex-1 flex-col p-6 md:p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-signal">02 · Diary</p>
+              <h3 class="mt-2 font-display text-2xl font-bold">Diary and bookings</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-steel">Put the day on the screen, not the whiteboard. Name, phone, registration, time, and the reason for the visit — an oil change, a tyre swap, an MOT.</p>
             </div>
           </article>
 
-          <article class="feature-card reveal col-span-1 flex flex-col rounded-xl bg-ink p-6 text-white lg:col-span-7 md:p-7" style="transition-delay: 120ms">
+          <article class="feature-card reveal group flex flex-col overflow-hidden rounded-xl border border-line bg-card" style="transition-delay: 0ms">
+            <button type="button" class="shot-open shot-frame relative block w-full cursor-zoom-in text-left" data-src="customers.png" data-title="Customers" aria-label="Enlarge Customers" data-alt="Fonrek Studio customers screen, with search by name or registration">
+              <img src="customers.png" width="1023" height="781" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-3 right-3 rounded-md bg-ink/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">Enlarge</span>
+            </button>
+            <div class="flex flex-1 flex-col p-6 md:p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-signal">03 · Customers</p>
+              <h3 class="mt-2 font-display text-2xl font-bold">Customers</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-steel">Search by name or registration while the customer is still at the counter. The list lives on the garage computer, ready the next time that car comes in.</p>
+            </div>
+          </article>
+
+          <article class="feature-card reveal group flex flex-col overflow-hidden rounded-xl border border-line bg-card" style="transition-delay: 60ms">
+            <button type="button" class="shot-open shot-frame relative block w-full cursor-zoom-in text-left" data-src="history.png" data-title="Service history" aria-label="Enlarge Service history" data-alt="Fonrek Studio service history, with job count, takings, and search by registration or customer name">
+              <img src="history.png" width="1024" height="796" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-3 right-3 rounded-md bg-ink/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">Enlarge</span>
+            </button>
+            <div class="flex flex-1 flex-col p-6 md:p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-signal">04 · History</p>
+              <h3 class="mt-2 font-display text-2xl font-bold">Service history</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-steel">Every repair, and what it took, in one list. Search by registration or customer name and see the jobs and the takings without opening a folder.</p>
+            </div>
+          </article>
+
+          <article class="feature-card reveal group flex flex-col overflow-hidden rounded-xl border border-line bg-card" style="transition-delay: 0ms">
+            <button type="button" class="shot-open shot-frame relative block w-full cursor-zoom-in text-left" data-src="catalogue.png" data-title="Job catalogue" aria-label="Enlarge Job catalogue" data-alt="Fonrek Studio job catalogue and price list, with labour and parts tabs, a job name, and a guide price">
+              <img src="catalogue.png" width="1017" height="795" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-3 right-3 rounded-md bg-ink/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">Enlarge</span>
+            </button>
+            <div class="flex flex-1 flex-col p-6 md:p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-signal">05 · Pricing</p>
+              <h3 class="mt-2 font-display text-2xl font-bold">Job catalogue</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-steel">Your labour and your parts, with a guide price in pounds. Build the list once, then price the job from it instead of guessing at the desk.</p>
+            </div>
+          </article>
+
+          <article class="feature-card reveal group flex flex-col overflow-hidden rounded-xl border border-line bg-card" style="transition-delay: 60ms">
+            <button type="button" class="shot-open shot-frame relative block w-full cursor-zoom-in text-left" data-src="inventory.png" data-title="Parts inventory" aria-label="Enlarge Parts inventory" data-alt="Fonrek Studio inventory screen, explaining that a part fitted to a job is deducted from stock">
+              <img src="inventory.png" width="1025" height="796" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-3 right-3 rounded-md bg-ink/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">Enlarge</span>
+            </button>
+            <div class="flex flex-1 flex-col p-6 md:p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-signal">06 · Stock</p>
+              <h3 class="mt-2 font-display text-2xl font-bold">Parts inventory</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-steel">Stock follows the job. Add a part and the count drops by one. Take that part off, or delete the job, and the piece goes back on the shelf.</p>
+            </div>
+          </article>
+
+          <article class="feature-card reveal group flex flex-col overflow-hidden rounded-xl border border-line bg-card" style="transition-delay: 0ms">
+            <button type="button" class="shot-open shot-frame relative block w-full cursor-zoom-in text-left" data-src="reminders.png" data-title="Service reminders" aria-label="Enlarge Service reminders" data-alt="Fonrek Studio reminders for inspections due within 30 days and upcoming diary bookings">
+              <img src="reminders.png" width="1021" height="795" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-3 right-3 rounded-md bg-ink/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">Enlarge</span>
+            </button>
+            <div class="flex flex-1 flex-col p-6 md:p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-signal">07 · Due soon</p>
+              <h3 class="mt-2 font-display text-2xl font-bold">Service reminders</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-steel">Inspections due in the next 30 days, and the bookings already in the diary. Filter to today or this week before the morning starts.</p>
+            </div>
+          </article>
+
+          <article class="feature-card reveal group flex flex-col overflow-hidden rounded-xl border border-line bg-card" style="transition-delay: 60ms">
+            <button type="button" class="shot-open shot-frame relative block w-full cursor-zoom-in text-left" data-src="settings.png" data-title="Garage settings" aria-label="Enlarge Garage settings" data-alt="Fonrek Studio settings for garage name, town, company number, and VAT details printed on the service report">
+              <img src="settings.png" width="1047" height="842" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true" class="pointer-events-none absolute bottom-3 right-3 rounded-md bg-ink/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">Enlarge</span>
+            </button>
+            <div class="flex flex-1 flex-col p-6 md:p-7">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-signal">08 · The garage</p>
+              <h3 class="mt-2 font-display text-2xl font-bold">Garage settings</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-steel">Name, town, company number, and VAT number, printed in the header of the service report. Save them once. The default VAT rate is 20%.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <article class="feature-card reveal flex flex-col rounded-xl bg-ink p-6 text-white md:p-7">
             <div class="ico grid h-12 w-12 place-items-center rounded-lg bg-white/10 text-white">
               <svg class="h-6 w-6"><use href="#i-db"/></svg>
             </div>
             <h3 class="mt-5 font-display text-2xl font-bold">Offline-first. Your SQLite file.</h3>
-            <p class="mt-2 max-w-prose text-[15px] leading-relaxed text-white/70">The workshop lives in a database on the garage PC — in the office or on the laptop in the van. It opens when the broadband does not. Customer names, plates, and job history are not uploaded to a cloud.</p>
-            <div class="mt-6 rounded-lg border border-white/10 bg-white/5 p-4" aria-hidden="true">
-              <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-white/40">Local database</p>
-              <p class="mt-2 break-all font-mono text-sm text-white">C:\FonrekStudio\workshop.db</p>
-              <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-bold uppercase tracking-wide">
-                <span class="rounded bg-emerald-400/15 px-2 py-1 text-emerald-300">On this PC</span>
-                <span class="rounded bg-white/10 px-2 py-1 text-white/70">Not synced</span>
-                <span class="rounded bg-white/10 px-2 py-1 text-white/70">No account</span>
-              </div>
-            </div>
+            <p class="mt-2 text-[15px] leading-relaxed text-white/70">The workshop lives in a database on the garage PC — in the office or on the laptop in the van. It opens when the broadband does not. Customer names, plates, and job history are not uploaded to a cloud.</p>
           </article>
 
-          <article class="feature-card reveal col-span-1 rounded-xl border border-line bg-card p-6 lg:col-span-12 md:p-7" style="transition-delay: 80ms">
-            <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-              <div class="flex gap-4">
-                <div class="ico grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-[#F6E4E1] text-ink">
-                  <svg class="h-6 w-6"><use href="#i-key"/></svg>
-                </div>
-                <div>
-                  <h3 class="font-display text-2xl font-bold">HWID licence key</h3>
-                  <p class="mt-2 max-w-xl text-[15px] leading-relaxed text-steel">The key is checked against the computer’s hardware ID, so the copy you bought stays on the workshop machine. One PC. One licence. No shared logins floating around the yard.</p>
-                </div>
+          <article class="feature-card reveal rounded-xl border border-line bg-card p-6 md:p-7" style="transition-delay: 60ms">
+            <div class="flex gap-4">
+              <div class="ico grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-[#F6E4E1] text-ink">
+                <svg class="h-6 w-6"><use href="#i-key"/></svg>
               </div>
-              <div class="shrink-0 rounded-lg border border-dashed border-ink/20 bg-paper px-4 py-3" aria-hidden="true">
-                <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-steel">Sample key</p>
-                <p class="mt-1 font-mono text-sm font-semibold tracking-wide">FRK-UK-DEMO-0000</p>
+              <div>
+                <h3 class="font-display text-2xl font-bold">HWID licence key</h3>
+                <p class="mt-2 text-[15px] leading-relaxed text-steel">The key is checked against the computer’s hardware ID, so the copy you bought stays on the workshop machine. One PC. One licence. No shared logins floating around the yard.</p>
               </div>
             </div>
           </article>
@@ -559,6 +598,16 @@
     </section>
   </main>
 
+  <dialog id="shot-dialog" aria-labelledby="shot-caption">
+    <div class="overflow-hidden rounded-xl bg-ink text-white shadow-mock">
+      <div class="flex items-center justify-between gap-4 px-4 py-3">
+        <p id="shot-caption" class="font-display text-lg font-bold"></p>
+        <button type="button" id="shot-close" class="rounded-md border border-white/20 px-3 py-1.5 text-sm font-semibold text-white hover:border-white/50">Close</button>
+      </div>
+      <img id="shot-full" alt="" class="block w-full bg-[#14181f] object-contain">
+    </div>
+  </dialog>
+
   <footer class="border-t border-white/10 bg-deep py-10 text-white/70">
     <div class="mx-auto flex max-w-[1120px] flex-col gap-6 px-5 sm:flex-row sm:items-end sm:justify-between">
       <div>
@@ -598,8 +647,25 @@
       });
 
       document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") setOpen(false);
+        if (event.key === "Escape" && !document.getElementById("shot-dialog").open) setOpen(false);
       });
+
+      var shotDialog = document.getElementById("shot-dialog");
+      var shotFull = document.getElementById("shot-full");
+      var shotCaption = document.getElementById("shot-caption");
+      document.querySelectorAll(".shot-open").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          shotFull.src = btn.getAttribute("data-src");
+          shotFull.alt = btn.getAttribute("data-alt") || "";
+          shotCaption.textContent = btn.getAttribute("data-title") || "";
+          shotDialog.showModal();
+        });
+      });
+      document.getElementById("shot-close").addEventListener("click", function () { shotDialog.close(); });
+      shotDialog.addEventListener("click", function (event) {
+        if (event.target === shotDialog) shotDialog.close();
+      });
+      shotDialog.addEventListener("close", function () { shotFull.removeAttribute("src"); });
 
       var form = document.getElementById("buy");
       form.addEventListener("submit", function (event) {
