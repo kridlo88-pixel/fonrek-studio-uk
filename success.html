@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank you — Fonrek Studio</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A1628">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23E10600'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial Black,Arial' font-size='16' fill='white'%3EF%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0A1628",
+            deep: "#071018",
+            signal: "#E10600",
+            signaldark: "#B10D16",
+            paper: "#F3EEE4",
+            steel: "#3E4C5C"
+          },
+          fontFamily: {
+            display: ['"Bricolage Grotesque"', "Arial", "sans-serif"],
+            sans: ["Figtree", "Arial", "sans-serif"]
+          },
+          boxShadow: {
+            mock: "0 30px 70px rgba(0, 0, 0, 0.38)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    ::selection { background: #E10600; color: #fff; }
+    a:focus-visible { outline: 2px solid #E10600; outline-offset: 3px; }
+  </style>
+</head>
+<body class="flex min-h-screen flex-col bg-ink font-sans text-white antialiased">
+  <header class="border-b border-t-[3px] border-b-white/10 border-t-signal bg-ink">
+    <div class="mx-auto flex h-16 max-w-[1120px] items-center justify-between px-5">
+      <a href="index.html" class="flex items-center gap-2.5 text-white">
+        <span class="grid h-9 w-9 place-items-center rounded-md bg-signal font-display text-lg font-extrabold leading-none">F</span>
+        <span class="font-display text-[1.05rem] font-bold tracking-tight">Fonrek <span class="font-medium text-white/65">Studio</span></span>
+      </a>
+      <a href="index.html" class="text-sm font-semibold text-white/75 hover:text-white">Back to the site</a>
+    </div>
+  </header>
+
+  <main class="flex flex-1 items-center px-5 py-16">
+    <div class="mx-auto w-full max-w-xl rounded-xl bg-paper p-6 text-ink shadow-mock md:p-10">
+      <span class="grid h-14 w-14 place-items-center rounded-full bg-signal text-white" aria-hidden="true">
+        <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12.5 9.2 17 19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <p class="mt-6 text-xs font-bold uppercase tracking-[0.18em] text-signal">Payment received</p>
+      <h1 class="mt-2 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl">Thank you for your purchase!</h1>
+      <p class="mt-4 text-lg leading-relaxed text-steel">Click the button below to download your Fonrek Studio UK installer. Once installed, run the program to generate your Hardware ID, and email it to <a class="font-semibold text-ink underline decoration-signal underline-offset-2" href="mailto:hello@fonrekstudio.co.uk">hello@fonrekstudio.co.uk</a> to receive your activation key.</p>
+      <a href="/FonrekStudioUK_Setup.exe" download class="mt-8 inline-flex w-full items-center justify-center rounded-md bg-signal px-5 py-4 text-lg font-bold text-white shadow-[0_10px_24px_rgba(225,6,0,0.28)] hover:bg-signaldark">Download the installer</a>
+      <p class="mt-3 text-center text-xs text-steel">FonrekStudioUK_Setup.exe · one workshop PC</p>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/10 bg-deep py-8 text-white/70">
+    <div class="mx-auto flex max-w-[1120px] flex-col gap-2 px-5 text-sm sm:flex-row sm:items-center sm:justify-between">
+      <p class="font-display text-base font-bold text-white">Fonrek Studio</p>
+      <p>© <span id="year">2026</span> Fonrek Studio · United Kingdom</p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>

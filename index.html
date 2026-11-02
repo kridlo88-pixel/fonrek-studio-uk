@@ -213,7 +213,7 @@
       <nav id="nav-panel" class="max-lg:hidden flex flex-col gap-2 max-lg:fixed max-lg:inset-x-0 max-lg:bottom-0 max-lg:top-[4.2rem] max-lg:z-40 max-lg:border-t max-lg:border-white/10 max-lg:bg-ink max-lg:p-6 max-lg:shadow-2xl lg:static lg:flex-row lg:items-center lg:gap-8 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none" aria-label="Primary">
         <a href="#features" class="rounded-md px-2 py-2 text-sm font-semibold text-white/75 hover:text-white">Features</a>
         <a href="#pricing" class="rounded-md px-2 py-2 text-sm font-semibold text-white/75 hover:text-white">Pricing</a>
-        <a href="#buy" class="mt-2 inline-flex items-center justify-center rounded-md bg-signal px-4 py-2.5 text-sm font-bold text-white hover:bg-signaldark lg:mt-0">Buy now</a>
+        <a href="STRIPE_LINK" class="mt-2 inline-flex items-center justify-center rounded-md bg-signal px-4 py-2.5 text-sm font-bold text-white hover:bg-signaldark lg:mt-0">Buy now</a>
       </nav>
 
       <button id="nav-toggle" type="button" class="relative z-[60] grid h-10 w-10 place-items-center rounded-md text-white lg:hidden" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
@@ -571,29 +571,9 @@
           </ul>
         </div>
 
-        <form id="buy" class="reveal rounded-xl bg-paper p-6 text-ink shadow-mock md:p-8" style="transition-delay: 100ms" action="mailto:hello@fonrekstudio.co.uk" method="post" enctype="text/plain">
-          <p class="text-xs font-bold uppercase tracking-[0.18em] text-signal">Buy now</p>
-          <h3 class="mt-2 font-display text-3xl font-bold tracking-tight">Get the lifetime licence</h3>
-          <p class="mt-2 text-sm leading-relaxed text-steel">Tell us the garage and where to send the installer. We reply with the desktop app and a licence key for that PC.</p>
-
-          <div class="mt-6 space-y-4">
-            <div>
-              <label for="garage" class="mb-1.5 block text-sm font-semibold">Garage name</label>
-              <input id="garage" name="garage" type="text" required autocomplete="organization" maxlength="120" class="w-full rounded-md border border-line bg-white px-3.5 py-3 text-ink outline-none ring-signal/30 placeholder:text-steel/50 focus:border-signal focus:ring-2" placeholder="e.g. Hartley Road Garage">
-            </div>
-            <div>
-              <label for="town" class="mb-1.5 block text-sm font-semibold">Town</label>
-              <input id="town" name="town" type="text" required autocomplete="address-level2" maxlength="80" class="w-full rounded-md border border-line bg-white px-3.5 py-3 text-ink outline-none focus:border-signal focus:ring-2" placeholder="e.g. Sheffield">
-            </div>
-            <div>
-              <label for="email" class="mb-1.5 block text-sm font-semibold">Email</label>
-              <input id="email" name="email" type="email" required autocomplete="email" maxlength="120" class="w-full rounded-md border border-line bg-white px-3.5 py-3 text-ink outline-none focus:border-signal focus:ring-2" placeholder="you@garage.co.uk">
-            </div>
-          </div>
-
-          <button type="submit" class="mt-6 inline-flex w-full items-center justify-center rounded-md bg-signal px-5 py-3.5 text-base font-bold text-white hover:bg-signaldark">Email to buy — £149 paid once</button>
-          <p class="mt-3 text-xs leading-relaxed text-steel">This opens an email to <a class="font-semibold text-ink underline decoration-signal underline-offset-2" href="mailto:hello@fonrekstudio.co.uk">hello@fonrekstudio.co.uk</a>. A second PC for the ramp? Mention it in the message and we will sort a key.</p>
-        </form>
+        <div id="buy" class="reveal flex items-center justify-center lg:min-h-full">
+          <a href="STRIPE_LINK" class="inline-flex w-full max-w-md items-center justify-center rounded-md bg-signal px-5 py-4 text-center text-lg font-bold text-white shadow-[0_10px_24px_rgba(225,6,0,0.28)] hover:bg-signaldark">Buy Now — £149 paid once</a>
+        </div>
       </div>
     </section>
   </main>
@@ -666,21 +646,6 @@
         if (event.target === shotDialog) shotDialog.close();
       });
       shotDialog.addEventListener("close", function () { shotFull.removeAttribute("src"); });
-
-      var form = document.getElementById("buy");
-      form.addEventListener("submit", function (event) {
-        if (!form.checkValidity()) return;
-        event.preventDefault();
-        var data = new FormData(form);
-        var subject = encodeURIComponent("Fonrek Studio lifetime licence");
-        var body = encodeURIComponent(
-          "Garage: " + data.get("garage") + "\n" +
-          "Town: " + data.get("town") + "\n" +
-          "Email: " + data.get("email") + "\n\n" +
-          "Please send the installer and a licence key for our workshop PC."
-        );
-        window.location.href = "mailto:hello@fonrekstudio.co.uk?subject=" + subject + "&body=" + body;
-      });
 
       var nodes = document.querySelectorAll(".reveal");
       if (!("IntersectionObserver" in window)) {
